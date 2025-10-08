@@ -1,103 +1,207 @@
-import Image from "next/image";
+import React from "react";
+import AppWrapper from "./AppWrapper";
+import logo from "../../public/logo.png";
 
-export default function Home() {
+export const metadata = {
+  title: "ANM Exports | Handcrafted Lighting | Luxury Lampshades & Chandeliers",
+  description:
+    "ANM Exports - Founded in 2017, creating luxurious handcrafted lampshades, exquisite chandeliers, and innovative Beith foldable chandeliers. Illuminating Elegance, Globally with sustainable jute, linen & cotton lighting.",
+  keywords:
+    "handcrafted lighting, luxury lampshades, chandeliers, Beith chandeliers, jute lighting, linen lampshades, cotton lighting, Indian artisan lighting, custom lighting solutions, sustainable lighting, ANM Exports",
+  authors: [{ name: "ANM Exports" }],
+  creator: "ANM Exports",
+  publisher: "ANM Exports",
+
+  // Open Graph metadata
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.anmexports.com",
+    title: "ANM Exports | Handcrafted Lighting Solutions",
+    description:
+      "Discover luxurious handcrafted lampshades, exquisite chandeliers, and innovative Beith foldable chandeliers. Artisan-made lighting from India for global elegance.",
+    siteName: "ANM Exports",
+    images: [
+      {
+        url: "/logo.png", // Add your image to public folder
+        width: 1200,
+        height: 630,
+        alt: "ANM Exports - Handcrafted Luxury Lighting",
+      },
+    ],
+  },
+
+  // Twitter metadata
+  twitter: {
+    card: "summary_large_image",
+    title: "ANM Exports | Handcrafted Lighting Solutions",
+    description:
+      "Luxurious handcrafted lampshades, chandeliers, and innovative Beith foldable lighting. Illuminating Elegance, Globally.",
+    images: ["/logo.png"], // Add your image to public folder
+    creator: "@anmexports", // Add your Twitter handle
+  },
+
+  // Additional metadata
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // Verification (add your verification codes)
+  verification: {
+    google: "your-google-verification-code",
+    // yandex: 'your-yandex-verification-code',
+    // bing: 'your-bing-verification-code',
+  },
+
+  alternates: {
+    canonical: "https://www.anmexports.com",
+  },
+
+  // Category
+  category: "Home Decor & Lighting",
+};
+
+// JSON-LD Schema for better SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.anmexports.com/#organization",
+      name: "ANM Exports",
+      url: "https://www.anmexports.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.anmexports.com/logo.png",
+      },
+      description:
+        "Handcrafted lighting manufacturer specializing in luxury lampshades, chandeliers, and innovative Beith foldable chandeliers since 2017.",
+      foundingDate: "2017",
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-8130065487",
+        contactType: "Sales",
+        email: "info@anmexports.com",
+        areaServed: "Worldwide",
+        availableLanguage: ["English", "Hindi"],
+      },
+      sameAs: ["https://www.instagram.com/anm_exports"],
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+        addressRegion: "India",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.anmexports.com/#website",
+      url: "https://www.anmexports.com",
+      name: "ANM Exports",
+      description: "Handcrafted Lighting Solutions",
+      publisher: {
+        "@id": "https://www.anmexports.com/#organization",
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.anmexports.com/#webpage",
+      url: "https://www.anmexports.com",
+      name: "ANM Exports | Handcrafted Lighting",
+      isPartOf: {
+        "@id": "https://www.anmexports.com/#website",
+      },
+      about: {
+        "@id": "https://www.anmexports.com/#organization",
+      },
+      description:
+        "Discover luxurious handcrafted lampshades, exquisite chandeliers, and innovative Beith foldable chandeliers from ANM Exports.",
+    },
+    {
+      "@type": "Product",
+      name: "Handcrafted Lampshades",
+      description:
+        "Luxurious handcrafted lampshades made from natural materials like jute, linen, and cotton.",
+      brand: {
+        "@type": "Brand",
+        name: "ANM Exports",
+      },
+      manufacturer: {
+        "@id": "https://www.anmexports.com/#organization",
+      },
+      material: ["Jute", "Linen", "Cotton"],
+      category: "Lighting & Home Decor",
+    },
+    {
+      "@type": "Product",
+      name: "Beith Foldable Chandeliers",
+      description:
+        "Innovative foldable chandeliers combining modern design with traditional craftsmanship.",
+      brand: {
+        "@type": "Brand",
+        name: "ANM Exports",
+      },
+      manufacturer: {
+        "@id": "https://www.anmexports.com/#organization",
+      },
+      material: ["Jute", "Linen", "Cotton"],
+      category: "Lighting & Home Decor",
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.anmexports.com/#localbusiness",
+      name: "ANM Exports",
+      image: "https://www.anmexports.com/og-image.jpg",
+      priceRange: "$$",
+      telephone: "+91-8130065487",
+      email: "info@anmexports.com",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "IN",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 28.4595,
+        longitude: 77.0266,
+      },
+      url: "https://www.anmexports.com",
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    },
+  ],
+};
+
+const page = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <>
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div>
+        <AppWrapper />
+      </div>
+    </>
   );
-}
+};
+
+export default page;
