@@ -16,6 +16,9 @@ export const metadata = {
   description: "Handcrafted lighting solutions",
   verification: {
     google: "qe26_BjlNOQ-HOA1LqkuPyY9PqwxG8C_F9Wqimz0vno",
+    other: {
+      "msvalidate.01": "F704DB57B147F3D1883F3D2AB30A482D", // Replace with actual code
+    },
   },
 };
 
