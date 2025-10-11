@@ -14,9 +14,9 @@ import {
 import image from "../../public/image.png";
 import image1 from "../../public/image1.png";
 import image2 from "../../public/image2.png";
-import image3 from "../../public/image3.png";
+import image7 from "../../public/image7.png";
 import Image from "next/image";
-import image4 from "../../public/image4.png";
+import image6 from "../../public/image6.png";
 import image5 from "../../public/image5.png";
 // import image6 from "../../public/image6.png";
 import logo from "../../public/logo.png";
@@ -131,9 +131,9 @@ export default function ANMExports() {
       case 2:
         return image2;
       case 3:
-        return image3;
+        return image6;
       case 4:
-        return image4;
+        return image7;
       case 5:
         return image5;
       // case 6:
